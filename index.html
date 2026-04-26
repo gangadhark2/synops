@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SynOps — Sports Media Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Syne (display) + DM Mono (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-row">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="#00FFB2" stroke-width="2"/>
+            <path d="M12 20 L20 12 L28 20 L20 28 Z" fill="#00FFB2" opacity="0.15" stroke="#00FFB2" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="4" fill="#00FFB2"/>
+          </svg>
+        </div>
+        <span class="logo-text">SynOps</span>
+        <span class="logo-badge">AI SCANNER</span>
+      </div>
+      <p class="tagline">Detect unauthorized sports media usage — powered by Gemini AI</p>
+    </header>
+
+    <!-- Main card -->
+    <main class="card">
+
+      <!-- Upload zone -->
+      <section class="upload-section">
+        <label class="upload-zone" id="uploadZone" for="fileInput">
+          <div class="upload-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="40" height="40" rx="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M24 30V18M24 18L19 23M24 18L29 23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 34H34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="upload-text">
+            <span class="upload-primary">Drop image here or <u>browse</u></span>
+            <span class="upload-secondary">PNG, JPG, WEBP — max 10MB</span>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" hidden />
+        </label>
+
+        <!-- Image preview -->
+        <div class="preview-wrap" id="previewWrap">
+          <img id="previewImg" src="" alt="Preview" />
+          <button class="remove-btn" id="removeBtn" title="Remove image">✕</button>
+          <span class="preview-filename" id="previewFilename"></span>
+        </div>
+      </section>
+
+      <!-- Scan button -->
+      <button class="scan-btn" id="scanBtn" disabled>
+        <span class="btn-label">Scan Image</span>
+        <span class="btn-icon">→</span>
+      </button>
+
+      <!-- Result section -->
+      <section class="result-section" id="resultSection">
+
+        <!-- Loading state -->
+        <div class="loading-state" id="loadingState">
+          <div class="spinner"></div>
+          <p class="loading-text" id="loadingText">Initializing scan…</p>
+        </div>
+
+        <!-- Result content -->
+        <div class="result-content" id="resultContent">
+          <div class="result-header">
+            <span class="result-label">SCAN REPORT</span>
+            <span class="result-badge" id="resultBadge">—</span>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-card" id="descCard">
+              <div class="result-card-title">
+                <span class="dot dot-blue"></span> Image Description
+              </div>
+              <p class="result-card-body" id="descText">—</p>
+            </div>
+
+            <div class="result-card" id="sportsCard">
+              <div class="result-card-title">
+                <span class="dot dot-green"></span> Sports Related?
+              </div>
+              <p class="result-card-body" id="sportsText">—</p>
+            </div>
+
+            <div class="result-card full-width" id="dupeCard">
+              <div class="result-card-title">
+                <span class="dot dot-orange"></span> Reuse / Duplication Risk
+              </div>
+              <p class="result-card-body" id="dupeText">—</p>
+            </div>
+          </div>
+
+          <div class="raw-toggle">
+            <button class="toggle-btn" id="toggleRaw">Show raw response ↓</button>
+            <pre class="raw-pre" id="rawPre"></pre>
+          </div>
+        </div>
+
+        <!-- Error state -->
+        <div class="error-state" id="errorState">
+          <span class="error-icon">⚠</span>
+          <p class="error-text" id="errorText">Something went wrong.</p>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Built with Gemini AI · SynOps Hackathon 2025</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
